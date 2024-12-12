@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1e1e1e;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 50px 20px;
+        }
+
+        header {
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-top: 10px;
+            color: #bbb;
+        }
+
+        .bio-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        .photo-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo:hover {
+            transform: scale(1.1);
+        }
+
+        .bio-text {
+            max-width: 600px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .bio-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        footer p {
+            color: #777;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">About Me</h1>
+            <p class="subtitle">A glimpse into my life and journey</p>
+        </header>
+        
+        <section class="bio-section">
+            <div class="photo-container">
+                <img src="/Other/me.JPG" alt="Aleksandar's Photo" class="photo">
+            </div>
+            
+            <div class="bio-text">
+                <h2>Hi, I'm Aleksandar!</h2>
+                <p>I was born in Serbia, in a small town called Topola. My family has always been at the heart of everything I do, and I helped run our family business 'Igraonica Game House Topola.' At 15 and a half, I moved to Canada with my family and found a new life in Calgary.</p>
+                <p>As a creative person with a passion for technology, I fell in love with the world of UX design and interactive websites. Currently, I'm studying User Experience Design at SAIT, aiming to build designs that are not only functional but also beautiful.</p>
+                <p>When I'm not immersed in design, you can find me gaming, exploring new ideas, or spending time with my amazing girlfriend, Amanda, who inspires me every day. I’m always looking for ways to grow and improve, both in my personal and professional life.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Aleksandar Sremcevic. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Example of adding additional interactivity (if needed)
+        // For now, no interactivity is necessary for the animations but you can add interactivity here in the future.
+    </script>
+</body>
+</html>
