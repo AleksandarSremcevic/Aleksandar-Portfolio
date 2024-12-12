@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(120deg, #0a6c87, #7e13b3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            animation: fadeIn 1.5s ease-in-out;
+            animation-delay: 0.5s;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 500px;
+            animation: slideUp 1.5s ease-in-out;
+        }
+
+        form input, form textarea, form button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: box-shadow 0.3s;
+        }
+
+        form input:focus, form textarea:focus {
+            box-shadow: 0 0 10px rgba(255, 11, 11, 0.5);
+        }
+
+        form textarea {
+            resize: none;
+        }
+
+        form button {
+            background: #0eaa44;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        form button:hover {
+            transform: scale(1.05);
+        }
+
+        .social {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social a {
+            color: white;
+            font-size: 2rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social a:hover {
+            transform: scale(1.2);
+            color: #ffcc00;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(16, 182, 138, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            animation: fadeIn 1.5s ease-in-out;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background: #380cb1;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .footer a:hover {
+            transform: scale(1.1);
+            background: #2a1340;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .background-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 10s linear infinite;
+            animation-delay: calc(-1s * var(--i));
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50vw);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation">
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
+        <span style="--i:4;"></span>
+        <span style="--i:5;"></span>
+        <span style="--i:6;"></span>
+        <span style="--i:7;"></span>
+        <span style="--i:8;"></span>
+    </div>
+
+    <header>
+        <h1>Contact Me</h1>
+        <p>Any requests or job offerings? I'd love to hear from you! Please fill out the form below or connect with me on LinkedIn.</p>
+    </header>
+
+    <form action="mailto:uxwebalex@gmail.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div class="social">
+        <a href="https://www.linkedin.com/in/aleksandar-sremcevic" target="_blank" title="Connect with me on LinkedIn">
+            <img src="Other/Social1.png" alt="LinkedIn Logo" style="width: 40px; height: 40px;">
+        </a>
+    </div>
+
+    <div class="footer">
+        <a href="index.html">Home</a>
+        <a href="page.html">Design Page</a>
+        <a href="about.html">About Me</a>
+    </div>
+</body>
+</html>
