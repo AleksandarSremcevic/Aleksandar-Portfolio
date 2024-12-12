@@ -147,8 +147,19 @@
         <div>
             <h1>Aleksandar Sremcevic's Portfolio</h1>
             <p>I am a passionate UX designer and student at SAIT</p>
-            <button onclick="location.href='page.html'">Take a look at my designs</button>
+            <button onclick="navigateToDesignPage()">Take a look at my designs</button>
         </div>
     </div>
+
+    <script>
+        function navigateToDesignPage() {
+            try {
+                window.location.href = 'page.html';
+            } catch (error) {
+                console.error('Navigation failed:', error);
+                alert('Something went wrong. Please try again later.');
+            }
+        }
+    </script>
 </body>
 </html>
