@@ -80,7 +80,8 @@
             transition: transform 0.3s ease;
         }
 
-        .design-gallery img {
+        .design-gallery img,
+        .video-showcase video {
             width: 250px;
             height: 250px;
             object-fit: cover;
@@ -89,7 +90,8 @@
             transition: transform 0.3s;
         }
 
-        .design-gallery img:hover {
+        .design-gallery img:hover,
+        .video-showcase video:hover {
             transform: scale(1.05);
         }
 
@@ -217,12 +219,14 @@
 
             .design-gallery {
                 display: flex;
-                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 20px;
                 gap: 15px;
                 margin-top: 10px;
-                max-height: 70vh; /* Limit height for scrolling */
-                overflow-y: auto; /* Enable vertical scroll */
-                padding-right: 10px;
+                max-height: none; /* Remove fixed height */
+                overflow-y: visible; /* Ensure everything is visible */
+                width: 100%; /* Ensure it takes full width */
             }
 
             .design-gallery img {

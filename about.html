@@ -22,6 +22,7 @@
             overflow-x: hidden;
             position: relative;
             transition: background-color 1s ease-in-out, color 1s ease-in-out;
+            text-align: center; /* Center text */
         }
 
         /* DAY MODE */
@@ -37,10 +38,13 @@
         }
 
         .container {
-            text-align: center;
             width: 100%;
             max-width: 1200px;
             padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the container content */
+            justify-content: center; /* Vertically center the content */
             z-index: 2;
             position: relative;
             flex-grow: 1;
@@ -50,6 +54,7 @@
         header {
             margin-bottom: 50px;
             position: relative;
+            text-align: center; /* Center header text */
         }
 
         .title {
@@ -57,6 +62,7 @@
             font-weight: 600;
             letter-spacing: 2px;
             color: #FFCC00;
+            margin: 0 auto; /* Ensure title is centered */
         }
 
         .subtitle {
@@ -73,6 +79,9 @@
             gap: 50px;
             position: relative;
             margin-top: 50px;
+            flex-wrap: wrap;
+            max-width: 1200px; /* Ensure content doesn't overflow */
+            justify-content: center; /* Center the content */
         }
 
         .photo-container {
@@ -82,6 +91,7 @@
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             animation: zoomIn 1.5s ease-in-out;
+            margin: 0 auto; /* Center the photo container */
         }
 
         .photo {
@@ -100,6 +110,7 @@
             font-size: 1.1rem;
             line-height: 1.6;
             animation: fadeInUp 2s ease-in-out;
+            margin: 0 auto; /* Center bio text */
         }
 
         .bio-text h2 {
@@ -113,21 +124,35 @@
             text-align: center;
             font-size: 0.9rem;
             color: #bbb;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 20px 0;
+            position: relative;
+            padding: 30px 0;
             background: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        footer p {
+            color: #777;
+            margin-bottom: 10px;
         }
 
         footer a {
             text-decoration: none;
             color: #ffcc00;
-            margin: 0 15px;
+            margin: 0 20px;
+            position: relative;
+            z-index: 11;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background-color: rgba(255, 204, 0, 0.2);
+            margin-top: 10px;
         }
 
-        footer p {
-            color: #777;
+        footer a:hover {
+            background-color: #ff9900;
         }
 
         /* Sun and Moon Toggle */
@@ -140,7 +165,7 @@
             font-size: 2rem;
             cursor: pointer;
             color: #fff;
-            z-index: 10;
+            z-index: 20;
             transition: color 0.3s ease-in-out;
         }
 
@@ -213,6 +238,87 @@
                 transform: translateY(0);
             }
         }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .bio-section {
+                flex-direction: column;
+                gap: 30px;
+                align-items: center;
+            }
+
+            .photo-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .bio-text {
+                font-size: 1rem;
+                max-width: 90%;
+            }
+
+            footer {
+                width: 100%;
+                position: relative;
+                padding: 20px;
+                margin-top: 30px;
+                text-align: center;
+                clear: both; /* Ensure the footer is below everything */
+            }
+
+            footer p {
+                margin-bottom: 0;
+            }
+
+            .hint-btn {
+                position: absolute;
+                top: 120px;
+                right: 20px;
+                font-size: 1rem;
+            }
+
+            .toggle-btn {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .bio-text {
+                font-size: 0.9rem;
+            }
+
+            footer {
+                width: 100%;
+                padding: 15px 0;
+                text-align: center;
+            }
+
+            .hint-btn {
+                position: absolute;
+                top: 100px;
+                right: 10px;
+                font-size: 0.9rem;
+            }
+
+            .toggle-btn {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body class="day-mode">
@@ -256,32 +362,6 @@
         </p>
     </footer>
     
-    <style>
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #bbb;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 20px 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 10; /* Ensures footer is above other content */
-        }
-    
-        footer a {
-            text-decoration: none;
-            color: #ffcc00;
-            margin: 0 15px;
-        }
-    
-        footer p {
-            color: #777;
-        }
-    </style>
-    
-
     <script>
         function toggleDayNight() {
             const body = document.body;
@@ -291,23 +371,18 @@
                 // Switch to night mode
                 body.classList.remove('day-mode');
                 body.classList.add('night-mode');
-                btn.innerHTML = "🌙";
+                btn.textContent = '🌙';  // Change button to moon icon
             } else {
                 // Switch to day mode
                 body.classList.remove('night-mode');
                 body.classList.add('day-mode');
-                btn.innerHTML = "🌞";
+                btn.textContent = '🌞';  // Change button to sun icon
             }
         }
 
         function showTooltip() {
             const tooltip = document.getElementById('tooltip');
-            tooltip.classList.add('active');
-
-            // Hide tooltip after 5 seconds
-            setTimeout(function() {
-                tooltip.classList.remove('active');
-            }, 5000);
+            tooltip.classList.toggle('active');
         }
     </script>
 </body>
