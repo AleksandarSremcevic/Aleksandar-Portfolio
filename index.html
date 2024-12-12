@@ -27,18 +27,24 @@
             justify-content: center;
             height: 100vh;
             text-align: center;
+            padding: 20px;
             overflow: hidden;
         }
 
         .hero h1 {
             font-size: 4rem;
-            animation: fadeIn 2s ease-in-out;
         }
 
         .hero p {
             font-size: 1.5rem;
             margin-top: 10px;
-            animation: fadeIn 3s ease-in-out;
+        }
+
+        .hero a {
+            position: relative;
+            z-index: 2; /* Ensure the link is above other elements */
+            display: inline-block;
+            text-decoration: none;
         }
 
         .hero button {
@@ -50,7 +56,6 @@
             background: #fdbb2d;
             color: #1a2a6c;
             cursor: pointer;
-            animation: slideUp 4s ease-in-out;
             transition: transform 0.3s;
         }
 
@@ -65,7 +70,7 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-            z-index: 1;
+            z-index: 1; /* Ensure background is below the button */
             pointer-events: none;
         }
 
@@ -73,7 +78,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            z-index: 0;
+            z-index: 0; /* Ensure floating circles are below the button */
             overflow: hidden;
         }
 
@@ -108,30 +113,52 @@
             animation-duration: 12s;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-
         @keyframes float {
             0%, 100% {
                 transform: translateY(0);
             }
             50% {
                 transform: translateY(-20px);
+            }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero button {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+
+            .floating-circles .circle {
+                animation-duration: 10s;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-top: 5px;
+            }
+
+            .hero button {
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+
+            .circle {
+                display: none; /* Hide floating circles on small screens */
             }
         }
     </style>
@@ -147,19 +174,10 @@
         <div>
             <h1>Aleksandar Sremcevic's Portfolio</h1>
             <p>I am a passionate UX designer and student at SAIT</p>
-            <button onclick="navigateToDesignPage()">Take a look at my designs</button>
+            <a href="page.html">
+                <button>Take a look at my designs</button>
+            </a>
         </div>
     </div>
-
-    <script>
-        function navigateToDesignPage() {
-            try {
-                window.location.href = 'page.html';
-            } catch (error) {
-                console.error('Navigation failed:', error);
-                alert('Something went wrong. Please try again later.');
-            }
-        }
-    </script>
 </body>
 </html>
