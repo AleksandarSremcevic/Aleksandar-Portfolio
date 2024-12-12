@@ -14,13 +14,26 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #1e1e1e;
-            color: white;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+            transition: background-color 1s ease-in-out, color 1s ease-in-out;
+        }
+
+        /* DAY MODE */
+        .day-mode {
+            background: linear-gradient(to top, #87CEEB, #FFFAF0); /* Sky blue to light yellow */
+            color: #333;
+        }
+
+        /* NIGHT MODE */
+        .night-mode {
+            background: linear-gradient(to top, #2C3E50, #34495E); /* Dark blue to grey */
+            color: #fff;
         }
 
         .container {
@@ -28,17 +41,22 @@
             width: 100%;
             max-width: 1200px;
             padding: 50px 20px;
+            z-index: 2;
+            position: relative;
+            flex-grow: 1;
+            animation: fadeIn 2s ease-in-out;
         }
 
         header {
             margin-bottom: 50px;
+            position: relative;
         }
 
         .title {
             font-size: 3.5rem;
             font-weight: 600;
             letter-spacing: 2px;
-            animation: fadeIn 2s ease-in-out;
+            color: #FFCC00;
         }
 
         .subtitle {
@@ -53,12 +71,13 @@
             align-items: center;
             justify-content: center;
             gap: 50px;
-            animation: slideIn 1.5s ease-in-out;
+            position: relative;
+            margin-top: 50px;
         }
 
         .photo-container {
-            width: 250px;
-            height: 250px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -86,6 +105,7 @@
         .bio-text h2 {
             font-size: 2rem;
             margin-bottom: 20px;
+            color: #ffcc00;
         }
 
         footer {
@@ -93,29 +113,84 @@
             text-align: center;
             font-size: 0.9rem;
             color: #bbb;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #ffcc00;
+            margin: 0 15px;
         }
 
         footer p {
             color: #777;
         }
 
+        /* Sun and Moon Toggle */
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+            z-index: 10;
+            transition: color 0.3s ease-in-out;
+        }
+
+        /* Hint Button */
+        .hint-btn {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            background-color: #FFCC00;
+            border: none;
+            padding: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 20;
+            transition: background-color 0.3s ease;
+        }
+
+        .hint-btn:hover {
+            background-color: #ff9900;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            display: none;
+            z-index: 30;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip.active {
+            display: block;
+        }
+
+        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
             }
             to {
                 opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
             }
         }
 
@@ -140,18 +215,18 @@
         }
     </style>
 </head>
-<body>
+<body class="day-mode">
     <div class="container">
         <header>
             <h1 class="title">About Me</h1>
             <p class="subtitle">A glimpse into my life and journey</p>
         </header>
-        
+
         <section class="bio-section">
             <div class="photo-container">
-                <img src="/Other/me.JPG" alt="Aleksandar's Photo" class="photo">
+                <img src="Other/me.JPG" alt="Aleksandar's Photo" class="photo">
             </div>
-            
+
             <div class="bio-text">
                 <h2>Hi, I'm Aleksandar!</h2>
                 <p>I was born in Serbia, in a small town called Topola. My family has always been at the heart of everything I do, and I helped run our family business 'Igraonica Game House Topola.' At 15 and a half, I moved to Canada with my family and found a new life in Calgary.</p>
@@ -160,14 +235,80 @@
             </div>
         </section>
 
-        <footer>
-            <p>&copy; 2024 Aleksandar Sremcevic. All rights reserved.</p>
-        </footer>
+        <!-- Day/Night Toggle Button -->
+        <button class="toggle-btn" onclick="toggleDayNight()">
+            🌞
+        </button>
+
+        <!-- Hint Button -->
+        <button class="hint-btn" onclick="showTooltip()">?</button>
+
+        <!-- Tooltip -->
+        <div class="tooltip" id="tooltip">Click the sun/moon icon to switch between day and night modes!</div>
     </div>
 
+    <footer>
+        <p>&copy; 2024 Aleksandar Sremcevic. All rights reserved.</p>
+        <p>
+            <a href="index.html">Home</a> | 
+            <a href="page.html">Designs</a> | 
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
+    
+    <style>
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #bbb;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 10; /* Ensures footer is above other content */
+        }
+    
+        footer a {
+            text-decoration: none;
+            color: #ffcc00;
+            margin: 0 15px;
+        }
+    
+        footer p {
+            color: #777;
+        }
+    </style>
+    
+
     <script>
-        // Example of adding additional interactivity (if needed)
-        // For now, no interactivity is necessary for the animations but you can add interactivity here in the future.
+        function toggleDayNight() {
+            const body = document.body;
+            const btn = document.querySelector('.toggle-btn');
+
+            if (body.classList.contains('day-mode')) {
+                // Switch to night mode
+                body.classList.remove('day-mode');
+                body.classList.add('night-mode');
+                btn.innerHTML = "🌙";
+            } else {
+                // Switch to day mode
+                body.classList.remove('night-mode');
+                body.classList.add('day-mode');
+                btn.innerHTML = "🌞";
+            }
+        }
+
+        function showTooltip() {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.classList.add('active');
+
+            // Hide tooltip after 5 seconds
+            setTimeout(function() {
+                tooltip.classList.remove('active');
+            }, 5000);
+        }
     </script>
 </body>
 </html>
