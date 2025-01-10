@@ -356,7 +356,7 @@
             <p>Flora V2</p>
         </div>
         <div class="video-showcase">
-            <video src="Websites/Website 4.mp4" autoplay loop muted onclick="window.open('https://aleksandarsremcevic.github.io/Ty-s-Plumbing/')" title="Visit Website 4"></video>
+            <video src="Websites/Website Tour4.mp4" autoplay loop muted onclick="window.open('https://aleksandarsremcevic.github.io/Ty-s-Plumbing/')" title="Visit Website 4"></video>
             <p>Ty's Plumbing</p>
         </div>
     </div>
@@ -397,6 +397,12 @@
             const lightbox = document.getElementById('lightbox');
             lightbox.style.display = 'none';
         }
+        
+        document.querySelectorAll('.video-showcase video').forEach(video => {
+    video.addEventListener('click', () => {
+        window.open(video.getAttribute('title'), '_blank');
+    });
+});
 
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
