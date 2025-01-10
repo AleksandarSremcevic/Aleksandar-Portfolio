@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Designs</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="Favicon/favicon.ico" type="image/x-icon">
+    
     <style>
         * {
             margin: 0;
@@ -397,7 +400,7 @@
             const lightbox = document.getElementById('lightbox');
             lightbox.style.display = 'none';
         }
-        
+
         document.querySelectorAll('.video-showcase video').forEach(video => {
     video.addEventListener('click', () => {
         window.open(video.getAttribute('title'), '_blank');
