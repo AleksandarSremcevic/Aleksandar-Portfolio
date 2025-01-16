@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Designs</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
     <link rel="icon" href="Favicon/favicon.ico" type="image/x-icon">
     
     <style>
@@ -270,7 +269,7 @@
 </head>
 <body>
     <header>
-        <h1>My  Designs</h1>
+        <h1>My Designs</h1>
         <p>Explore a collection of my personal designs</p>
     </header>
 
@@ -410,10 +409,10 @@
         }
 
         document.querySelectorAll('.video-showcase video').forEach(video => {
-    video.addEventListener('click', () => {
-        window.open(video.getAttribute('title'), '_blank');
-    });
-});
+            video.addEventListener('click', () => {
+                window.open(video.getAttribute('title'), '_blank');
+            });
+        });
 
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
@@ -423,4 +422,3 @@
     </script>
 </body>
 </html>
- 
